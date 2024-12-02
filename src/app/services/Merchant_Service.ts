@@ -25,10 +25,10 @@ export class MerchantService extends ServiceBase{
     }
     
     
-    static   getCategory=async(): Promise<string[]>=>{
+    static   getCategory=async(): Promise<Category[]>=>{
         try {
             const catResp = await fetch(this.getUrl('/categories'), {
-                method: 'GET',
+                method: 'GET'
             });
     
             if (!catResp.ok) {
@@ -40,7 +40,7 @@ export class MerchantService extends ServiceBase{
            
             if (data?.data?.length > 0) {
                 console.log("catgry",data.data);
-                return data.data.map((category:any )=> category.image);
+                return data.data;
             } else {
                 return [];
             }
